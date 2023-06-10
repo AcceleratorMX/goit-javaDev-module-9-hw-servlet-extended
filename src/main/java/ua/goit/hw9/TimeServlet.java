@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 
 import java.io.IOException;
@@ -18,14 +19,14 @@ import java.util.Arrays;
 
 @WebServlet("/time")
 public class TimeServlet extends HttpServlet {
-    private static final String TEMPLATES = "D:/Guides/GoIT-Java/JavaDev/Module-9/goit-javaDev-module-9-hw-servlet-extended/src/main/resources/templates/";
+    private static final String TEMPLATES = "/templates/";
     private TemplateEngine engine;
 
     @Override
     public void init() throws ServletException {
         engine = new TemplateEngine();
 
-        FileTemplateResolver resolver = new FileTemplateResolver();
+        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
         resolver.setPrefix(TEMPLATES);
         resolver.setSuffix(".html");
         resolver.setTemplateMode("HTML5");

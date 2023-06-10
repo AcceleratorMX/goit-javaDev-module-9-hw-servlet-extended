@@ -63,7 +63,6 @@ public class TimeServlet extends HttpServlet {
         return "UTC";
     }
 
-
     public void setCookie(HttpServletResponse resp, String name, String value) {
         Cookie cookie = new Cookie(name, value);
         cookie.setMaxAge(-1);
